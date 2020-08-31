@@ -1,8 +1,7 @@
-var start=0;
-var end=1;
+
 var arr=[['0','0','0'],['0','0','0'],['0','0','0']];
 const game={
-    state:start,
+    state:0,
     turn:'X',
     move:0,
 }
@@ -22,6 +21,7 @@ function nextturn()
     if(game.move==9)
     {
         alert("game over");
+        game.state=1;
     }
     playerspan.textContent=game.turn;
 }
@@ -38,10 +38,12 @@ function boxclicked(row,col)
         if(arr[0][0]+arr[1][1]+arr[2][2]=="XXX")
         {
             alert("winner: X");
+            game.state=1;
         }
         else if(arr[0][0]+arr[1][1]+arr[2][2]=="OOO")
         {
             alert("winner: O");
+            game.state=1;
         }
     }
     else if(row+col==4)
@@ -49,28 +51,38 @@ function boxclicked(row,col)
         if(arr[0][2]+arr[1][1]+arr[2][0]=="XXX")
         {
             alert("winner: X");
+            game.state=1;
         }
         else if(arr[0][2]+arr[1][1]+arr[2][0]=="OOO")
         {
             alert("winner: O");
+            game.state=1;
         }
     }
     if(arr[row-1][0]+arr[row-1][1]+arr[row-1][2]=="XXX")
     {
             alert("winner: X");
+            game.state=1;
     }
     else if(arr[row-1][0]+arr[row-1][1]+arr[row-1][2]=="OOO")
     {
             alert("winner: O");
+            game.state=1;
     }
     else if(arr[0][col-1]+arr[1][col-1]+arr[2][col-1]=="XXX")
     {
             alert("winner: X");
+            game.state=1;
     }
     else if(arr[0][col-1]+arr[1][col-1]+arr[2][col-1]=="OOO")
     {
             alert("winner: O");
+            game.state=1;
     }
     nextturn();
+    if(game.state==1)
+    {
+        location.reload();
+    }
     }
 }
