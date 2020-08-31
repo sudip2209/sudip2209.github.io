@@ -28,7 +28,7 @@ function nextturn()
 
 function boxclicked(row,col)
 {
-    if(arr[row-1][col-1]=='0')
+    if(arr[row-1][col-1]=='0' && game.state==0)
     {
     arr[row-1][col-1]=game.turn;
     let current_clickbox=gametable.children[0].children[row-1].children[col-1];
@@ -80,9 +80,10 @@ function boxclicked(row,col)
             game.state=1;
     }
     nextturn();
-    if(game.state==1)
-    {
-        location.reload();
     }
-    }
+}
+// for reload the page when user clicked button
+ function restart()
+{
+    location.reload();
 }
