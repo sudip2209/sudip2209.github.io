@@ -46,7 +46,7 @@ function boxclicked(row,col)
             game.state=1;
         }
     }
-    else if(row+col==4)
+    if(row+col==4)
     {
         if(arr[0][2]+arr[1][1]+arr[2][0]=="XXX")
         {
